@@ -5,18 +5,20 @@ import threading
 
 noti_line = Line()
 
+coins = ['usdt-eth', 'usdt-xrp', 'usdt-btc', 'usdt-bch', 'usdt-etc', 'usdt-trx']
+
 def printit():
   threading.Timer(300, printit).start()
-  response = requests.get('http://localhost:5000/percunia/5min/usdt-eth')
-  if response.status_code == 200:
-    if json.loads(response.content.decode('utf-8'))['value']:
-      print('Signal found')
-      noti_line.line_text('signal found')
+  for coin in coins:
+    response = requests.get('http://localhost:5000/percunia/5min/usdt-eth')
+    if response.status_code == 200:
+      if json.loads(response.content.decode('utf-8'))['value']:
+        print('Signal found: ', coin)
+        noti_line.line_text('signal found: ' + coin)
+      else:
+        print('Signal not found: ', coin)
     else:
-      print('Signal not found')
-      noti_line.line_text('signal not found')
-  else:
-    print('Fail')
+      print('Fail')
 
 if __name__ == "__main__":
   printit()
