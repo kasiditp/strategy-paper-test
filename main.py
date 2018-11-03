@@ -10,7 +10,7 @@ coins = ['usdt-eth', 'usdt-xrp', 'usdt-btc', 'usdt-bch', 'usdt-etc', 'usdt-trx']
 def printit():
   threading.Timer(300, printit).start()
   for coin in coins:
-    response = requests.get('http://localhost:5000/percunia/5min/usdt-eth')
+    response = requests.get('http://localhost:5000/percunia/5min/' + coin)
     if response.status_code == 200:
       if json.loads(response.content.decode('utf-8'))['value']:
         print('Signal found: ', coin)
