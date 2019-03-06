@@ -5,7 +5,7 @@ import threading
 
 noti_line = Line()
 
-coins = ['usdt-eth', 'usdt-xrp', 'usdt-btc', 'usdt-bch', 'usdt-etc', 'usdt-trx']
+coins = ['usdt-eth', 'usdt-xrp', 'usdt-btc', 'usdt-bch', 'usdt-etc', 'usdt-trx', 'usdt-ltc', 'usdt-neo', 'usdt-xmr']
 
 def printit():
   threading.Timer(300, printit).start()
